@@ -53,9 +53,7 @@
     "text2": "Nous privilégions des relations durables, un langage clair et des solutions pragmatiques — pour les entreprises comme pour les particuliers.",
     "stats": {
       "expertiseValue": "6",
-      "expertiseLabel": "domaines d'expertise",
-      "languagesValue": "FR · EN",
-      "languagesLabel": "accompagnement multilingue"
+      "expertiseLabel": "domaines d'expertise"
     }
   },
   "contact": {

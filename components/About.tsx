@@ -22,23 +22,13 @@ export default function About() {
             <p className="mt-4 text-lg leading-relaxed text-stone-600">{t("text2")}</p>
           </div>
 
-          <div className="grid grid-cols-2 divide-x divide-stone-200 border-t border-stone-300 pt-8">
-            <div className="pe-8">
-              <p className="font-serif text-5xl font-medium text-navy">
-                {t("stats.expertiseValue")}
-              </p>
-              <p className="mt-3 text-sm leading-snug text-stone-500">
-                {t("stats.expertiseLabel")}
-              </p>
-            </div>
-            <div className="ps-8">
-              <p className="font-serif text-3xl font-medium text-navy">
-                {t("stats.languagesValue")}
-              </p>
-              <p className="mt-3 text-sm leading-snug text-stone-500">
-                {t("stats.languagesLabel")}
-              </p>
-            </div>
+          <div className="border-t border-stone-300 pt-8">
+            <p className="font-serif text-5xl font-medium text-navy">
+              {t("stats.expertiseValue")}
+            </p>
+            <p className="mt-3 text-sm leading-snug text-stone-500">
+              {t("stats.expertiseLabel")}
+            </p>
           </div>
         </div>
       </Container>
