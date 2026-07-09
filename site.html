@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HKMT Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #faf7f2; font-family: 'Readex Pro', sans-serif; }
+  a { color: inherit; }
+  input, textarea, button { font-family: inherit; }
+  .hkmt-nav-link { transition: color .2s; }
+  .hkmt-nav-link:hover { color: #f39200 !important; }
+  .hkmt-cta:hover { background: #d98200 !important; }
+  .hkmt-card:hover { box-shadow: 0 8px 24px rgba(27,55,100,.1); }
+  @media (max-width: 900px) {
+    .hkmt-hero { grid-template-columns: 1fr !important; padding: 40px 24px 56px !important; }
+    .hkmt-services-grid { grid-template-columns: repeat(2,1fr) !important; }
+    .hkmt-about { grid-template-columns: 1fr !important; }
+    .hkmt-contact { grid-template-columns: 1fr !important; }
+    .hkmt-header { padding: 14px 20px !important; }
+    .hkmt-nav { display: none !important; }
+    .hkmt-nav-mobile { display: flex !important; }
+  }
+  @media (max-width: 600px) {
+    .hkmt-services-grid { grid-template-columns: 1fr !important; }
+    .hkmt-section { padding-left: 20px !important; padding-right: 20px !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <textarea name="message"></textarea>
+  <input type="text" name="bot-field" />
+</form>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+const { useState } = React;
+
+const LOGO_SRC = "data:image/png;base64,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";
+
+const STRINGS = {"fr": {"navHome": "Accueil", "navServices": "Services", "navAbout": "À propos", "navContact": "Contact", "heroBadge": "Conseil & solutions IT — Luxembourg", "heroTitle": "La technologie au service de vos ambitions", "heroText": "HKMT Solutions accompagne entreprises et particuliers dans la conception, le développement et la sécurisation de leurs systèmes d'information — du conseil à l'exploitation, avec écoute et proximité.", "heroCta": "Parlons de votre projet", "heroCta2": "Découvrir nos services →", "heroImagePlaceholder": "Photo équipe / bureaux (à fournir)", "servicesTitle": "Nos services", "servicesIntro": "Une expertise complète en technologies de l'information, adaptée à la taille et aux enjeux de chaque client.", "services": [{"title": "Conseil & audit IT", "text": "Analyse, audit et conception de vos systèmes d'information et infrastructures technologiques."}, {"title": "Développement logiciel", "text": "Développement, intégration et maintenance de logiciels, applications et solutions digitales sur mesure."}, {"title": "Cybersécurité", "text": "Protection de vos systèmes et gestion sécurisée de vos données, selon les meilleurs standards."}, {"title": "Cloud computing", "text": "Migration, hébergement et exploitation de vos infrastructures dans le cloud, en toute fiabilité."}, {"title": "IA & transformation digitale", "text": "Intelligence artificielle et accompagnement de bout en bout dans votre transformation numérique."}, {"title": "Formation & assistance", "text": "Formation de vos équipes et assistance technique continue dans tous nos domaines d'expertise."}], "aboutTitle": "Une société luxembourgeoise, proche de ses clients", "aboutText1": "Basée au Grand-Duché de Luxembourg, HKMT Solutions est née d'une conviction simple : les meilleures solutions technologiques naissent d'une écoute attentive, guidée par la sagesse.", "aboutText2": "Nous privilégions des relations durables, un langage clair et des solutions pragmatiques — pour les entreprises comme pour les particuliers.", "aboutStat1": "6", "aboutStat1Label": "domaines d'expertise", "aboutStat2": "FR · EN · AR", "aboutStat2Label": "accompagnement multilingue", "aboutImagePlaceholder": "Photo fondateurs / équipe (à fournir)", "contactTitle": "Contactez-nous", "contactText": "Un projet, une question, un besoin d'audit ? Écrivez-nous, nous vous répondons rapidement.", "formName": "Votre nom", "formEmail": "Votre e-mail", "formMessage": "Votre message", "formSubmit": "Envoyer le message", "formSent": "Message envoyé ✓", "formError": "Erreur, réessayez plus tard.", "footerCopyright": "© 2026 HKMT Solutions S.à r.l. — Luxembourg"}, "en": {"navHome": "Home", "navServices": "Services", "navAbout": "About", "navContact": "Contact", "heroBadge": "IT consulting & solutions — Luxembourg", "heroTitle": "Technology in the service of your ambitions", "heroText": "HKMT Solutions supports businesses and individuals in designing, building and securing their information systems — from consulting to operations, with care and proximity.", "heroCta": "Let's talk about your project", "heroCta2": "Explore our services →", "heroImagePlaceholder": "Team / office photo (to be provided)", "servicesTitle": "Our services", "servicesIntro": "End-to-end information technology expertise, tailored to the size and challenges of each client.", "services": [{"title": "IT consulting & audit", "text": "Analysis, audit and design of your information systems and technology infrastructures."}, {"title": "Software development", "text": "Development, integration and maintenance of custom software, applications and digital solutions."}, {"title": "Cybersecurity", "text": "Protecting your systems and managing your data securely, to the highest standards."}, {"title": "Cloud computing", "text": "Migration, hosting and operation of your infrastructure in the cloud, with full reliability."}, {"title": "AI & digital transformation", "text": "Artificial intelligence and end-to-end support throughout your digital transformation."}, {"title": "Training & assistance", "text": "Training your teams and providing ongoing technical assistance across all our areas of expertise."}], "aboutTitle": "A Luxembourg company, close to its clients", "aboutText1": "Based in the Grand Duchy of Luxembourg, HKMT Solutions was founded on a simple conviction: the best technology solutions are born from attentive listening, guided by wisdom.", "aboutText2": "We favour lasting relationships, clear language and pragmatic solutions — for businesses and individuals alike.", "aboutStat1": "6", "aboutStat1Label": "areas of expertise", "aboutStat2": "FR · EN · AR", "aboutStat2Label": "multilingual support", "aboutImagePlaceholder": "Founders / team photo (to be provided)", "contactTitle": "Get in touch", "contactText": "A project, a question, an audit need? Write to us — we reply quickly.", "formName": "Your name", "formEmail": "Your email", "formMessage": "Your message", "formSubmit": "Send message", "formSent": "Message sent ✓", "formError": "Error, please try again later.", "footerCopyright": "© 2026 HKMT Solutions S.à r.l. — Luxembourg"}, "ar": {"navHome": "الرئيسية", "navServices": "خدماتنا", "navAbout": "من نحن", "navContact": "اتصل بنا", "heroBadge": "استشارات وحلول تكنولوجيا المعلومات — لوكسمبورغ", "heroTitle": "التكنولوجيا في خدمة طموحاتكم", "heroText": "ترافق HKMT Solutions المؤسسات والأفراد في تصميم وتطوير وتأمين أنظمتهم المعلوماتية — من الاستشارة إلى التشغيل، بإصغاء وقرب.", "heroCta": "لنتحدث عن مشروعكم", "heroCta2": "← اكتشف خدماتنا", "heroImagePlaceholder": "صورة الفريق / المكاتب (تُقدَّم لاحقاً)", "servicesTitle": "خدماتنا", "servicesIntro": "خبرة شاملة في تكنولوجيا المعلومات، مصمَّمة وفق حجم واحتياجات كل عميل.", "services": [{"title": "استشارات وتدقيق تقني", "text": "تحليل وتدقيق وتصميم أنظمتكم المعلوماتية وبنيتكم التحتية التكنولوجية."}, {"title": "تطوير البرمجيات", "text": "تطوير ودمج وصيانة البرمجيات والتطبيقات والحلول الرقمية حسب الطلب."}, {"title": "الأمن السيبراني", "text": "حماية أنظمتكم وإدارة بياناتكم بأمان وفق أعلى المعايير."}, {"title": "الحوسبة السحابية", "text": "ترحيل واستضافة وتشغيل بنيتكم التحتية في السحابة بموثوقية تامة."}, {"title": "الذكاء الاصطناعي والتحوّل الرقمي", "text": "الذكاء الاصطناعي ومرافقتكم من البداية إلى النهاية في تحوّلكم الرقمي."}, {"title": "التدريب والمساعدة", "text": "تدريب فرقكم وتقديم مساعدة تقنية مستمرة في جميع مجالات خبرتنا."}], "aboutTitle": "شركة لوكسمبورغية قريبة من عملائها", "aboutText1": "انطلقت HKMT Solutions من دوقية لوكسمبورغ الكبرى بقناعة بسيطة: أفضل الحلول التكنولوجية تولد من إصغاء متأنٍّ تقوده الحكمة.", "aboutText2": "نحرص على علاقات دائمة ولغة واضحة وحلول عملية — للمؤسسات والأفراد على حدّ سواء.", "aboutStat1": "6", "aboutStat1Label": "مجالات خبرة", "aboutStat2": "FR · EN · AR", "aboutStat2Label": "مرافقة متعددة اللغات", "aboutImagePlaceholder": "صورة المؤسسين / الفريق (تُقدَّم لاحقاً)", "contactTitle": "اتصلوا بنا", "contactText": "مشروع، سؤال، أو حاجة إلى تدقيق؟ راسلونا ونردّ عليكم بسرعة.", "formName": "اسمكم", "formEmail": "بريدكم الإلكتروني", "formMessage": "رسالتكم", "formSubmit": "إرسال الرسالة", "formSent": "✓ تم إرسال الرسالة", "formError": "خطأ، حاول مرة أخرى لاحقاً.", "footerCopyright": "© 2026 HKMT Solutions S.à r.l. — لوكسمبورغ"}};
+
+function encodeForm(data) {
+  return Object.keys(data).map(function(k) {
+    return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+  }).join("&");
+}
+
+function App() {
+  const [lang, setLang] = useState("fr");
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
+
+  const t = STRINGS[lang];
+  const dir = lang === "ar" ? "rtl" : "ltr";
+
+  function submitForm(e) {
+    e.preventDefault();
+    setStatus("sending");
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encodeForm({ "form-name": "contact", name: form.name, email: form.email, message: form.message })
+    })
+      .then(function() { setStatus("sent"); })
+      .catch(function() { setStatus("error"); });
+  }
+
+  const langBtn = function(code, label) {
+    const active = lang === code;
+    return (
+      <button
+        onClick={function() { setLang(code); }}
+        style={{
+          border: "none", cursor: "pointer", font: "600 12px 'Readex Pro',sans-serif",
+          padding: "6px 12px", borderRadius: 999,
+          background: active ? "#1b3764" : "transparent",
+          color: active ? "#fff" : "#5f6b7d"
+        }}
+      >{label}</button>
+    );
+  };
+
+  return (
+    <div dir={dir} style={{ minHeight: "100vh", background: "#faf7f2" }}>
+
+      <header className="hkmt-header" style={{ position: "sticky", top: 0, zIndex: 50, display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 56px", background: "rgba(250,247,242,.92)", backdropFilter: "blur(8px)", borderBottom: "1px solid #ece7de" }}>
+        <a href="#accueil" dir="ltr" style={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+          <img src={LOGO_SRC} alt="HKMT Solutions" style={{ height: 38, display: "block" }} />
+        </a>
+        <nav className="hkmt-nav" style={{ display: "flex", alignItems: "center", gap: 30, font: "500 15px 'Readex Pro',sans-serif", color: "#33415c" }}>
+          <a className="hkmt-nav-link" href="#accueil" style={{ textDecoration: "none", color: "#33415c" }}>{t.navHome}</a>
+          <a className="hkmt-nav-link" href="#services" style={{ textDecoration: "none", color: "#33415c" }}>{t.navServices}</a>
+          <a className="hkmt-nav-link" href="#apropos" style={{ textDecoration: "none", color: "#33415c" }}>{t.navAbout}</a>
+          <a className="hkmt-nav-link" href="#contact" style={{ background: "#1b3764", color: "#fff", padding: "10px 24px", borderRadius: 999, textDecoration: "none" }}>{t.navContact}</a>
+          <div style={{ display: "flex", gap: 2, background: "#ece7de", borderRadius: 999, padding: 3 }}>
+            {langBtn("fr", "FR")}
+            {langBtn("en", "EN")}
+            {langBtn("ar", "AR")}
+          </div>
+        </nav>
+      </header>
+
+      <section id="accueil" className="hkmt-hero hkmt-section" style={{ display: "grid", gridTemplateColumns: "1.15fr 1fr", gap: 48, alignItems: "center", padding: "72px 56px 80px", maxWidth: 1200, margin: "0 auto" }}>
+        <div>
+          <div style={{ display: "inline-block", background: "#fdeeda", color: "#c97800", font: "600 13px 'Readex Pro',sans-serif", padding: "7px 16px", borderRadius: 999, marginBottom: 22 }}>{t.heroBadge}</div>
+          <h1 style={{ margin: "0 0 22px", font: "600 46px/1.35 'Readex Pro',sans-serif", color: "#1b3764" }}>{t.heroTitle}</h1>
+          <p style={{ margin: "0 0 34px", font: "300 18px/1.9 'Readex Pro',sans-serif", color: "#5f6b7d", maxWidth: 540 }}>{t.heroText}</p>
+          <div style={{ display: "flex", gap: 18, alignItems: "center", flexWrap: "wrap" }}>
+            <a className="hkmt-cta" href="#contact" style={{ background: "#f39200", color: "#fff", padding: "15px 36px", borderRadius: 999, font: "600 16px 'Readex Pro',sans-serif", textDecoration: "none", boxShadow: "0 6px 18px rgba(243,146,0,.3)" }}>{t.heroCta}</a>
+            <a href="#services" style={{ color: "#1b3764", font: "500 15px 'Readex Pro',sans-serif", borderBottom: "2px solid #f39200", paddingBottom: 2, textDecoration: "none" }}>{t.heroCta2}</a>
+          </div>
+        </div>
+        <div style={{ background: "linear-gradient(145deg,#1b3764,#2a4d85)", borderRadius: 28, height: 380, position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <div style={{ position: "absolute", right: -50, bottom: -50, width: 200, height: 200, borderRadius: "50%", background: "rgba(243,146,0,.25)" }}></div>
+          <div style={{ position: "absolute", left: -30, top: -30, width: 130, height: 130, borderRadius: "50%", border: "2px solid rgba(255,255,255,.15)" }}></div>
+          <div style={{ textAlign: "center", color: "#c8d3e4", font: "300 14px 'Readex Pro',sans-serif", padding: "0 40px" }}>{t.heroImagePlaceholder}</div>
+        </div>
+      </section>
+
+      <section id="services" className="hkmt-section" style={{ background: "#fff", padding: "80px 56px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <h2 style={{ margin: "0 0 10px", font: "600 32px 'Readex Pro',sans-serif", color: "#1b3764" }}>{t.servicesTitle}</h2>
+          <p style={{ margin: "0 0 40px", font: "300 17px/1.8 'Readex Pro',sans-serif", color: "#5f6b7d", maxWidth: 640 }}>{t.servicesIntro}</p>
+          <div className="hkmt-services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
+            {t.services.map(function(svc, i) {
+              return (
+                <div key={i} className="hkmt-card" style={{ background: "#faf7f2", borderRadius: 20, padding: 30, transition: "box-shadow .2s" }}>
+                  <div style={{ width: 46, height: 46, borderRadius: 14, background: "#fdeeda", color: "#f39200", display: "flex", alignItems: "center", justifyContent: "center", font: "700 19px 'Readex Pro',sans-serif", marginBottom: 18 }}>{i + 1}</div>
+                  <h3 style={{ margin: "0 0 10px", font: "600 18px 'Readex Pro',sans-serif", color: "#1b3764" }}>{svc.title}</h3>
+                  <p style={{ margin: 0, font: "300 14px/1.9 'Readex Pro',sans-serif", color: "#5f6b7d" }}>{svc.text}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section id="apropos" className="hkmt-section" style={{ padding: "80px 56px" }}>
+        <div className="hkmt-about" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 56, alignItems: "center" }}>
+          <div style={{ background: "#ece7de", borderRadius: 28, height: 320, display: "flex", alignItems: "center", justifyContent: "center", color: "#8a8377", font: "300 14px 'Readex Pro',sans-serif", textAlign: "center", padding: "0 30px" }}>{t.aboutImagePlaceholder}</div>
+          <div>
+            <h2 style={{ margin: "0 0 18px", font: "600 32px 'Readex Pro',sans-serif", color: "#1b3764" }}>{t.aboutTitle}</h2>
+            <p style={{ margin: "0 0 16px", font: "300 17px/2 'Readex Pro',sans-serif", color: "#5f6b7d" }}>{t.aboutText1}</p>
+            <p style={{ margin: "0 0 28px", font: "300 17px/2 'Readex Pro',sans-serif", color: "#5f6b7d" }}>{t.aboutText2}</p>
+            <div style={{ display: "flex", gap: 36 }}>
+              <div><div style={{ font: "700 30px 'Readex Pro',sans-serif", color: "#f39200" }}>{t.aboutStat1}</div><div style={{ font: "300 13px 'Readex Pro',sans-serif", color: "#5f6b7d" }}>{t.aboutStat1Label}</div></div>
+              <div><div style={{ font: "700 30px 'Readex Pro',sans-serif", color: "#f39200" }}>{t.aboutStat2}</div><div style={{ font: "300 13px 'Readex Pro',sans-serif", color: "#5f6b7d" }}>{t.aboutStat2Label}</div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="hkmt-section" style={{ background: "#1b3764", padding: "80px 56px" }}>
+        <div className="hkmt-contact" style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56 }}>
+          <div>
+            <h2 style={{ margin: "0 0 16px", font: "600 32px 'Readex Pro',sans-serif", color: "#fff" }}>{t.contactTitle}</h2>
+            <p style={{ margin: "0 0 30px", font: "300 17px/1.9 'Readex Pro',sans-serif", color: "#c8d3e4" }}>{t.contactText}</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14, font: "400 16px 'Readex Pro',sans-serif", color: "#fff" }}>
+              <div style={{ display: "flex", gap: 12, alignItems: "center" }}><span style={{ color: "#f39200" }}>&#9993;</span> info@hkmt.lu</div>
+              <div style={{ display: "flex", gap: 12, alignItems: "center" }}><span style={{ color: "#f39200" }}>&#9678;</span> Luxembourg</div>
+            </div>
+          </div>
+          <div style={{ background: "#fff", borderRadius: 24, padding: 36, display: "flex", flexDirection: "column", gap: 16 }}>
+            {status === "sent" ? (
+              <p style={{ font: "500 16px 'Readex Pro',sans-serif", color: "#1b3764", textAlign: "center", padding: "20px 0" }}>{t.formSent}</p>
+            ) : (
+              <form onSubmit={submitForm} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                <input required placeholder={t.formName} value={form.name} onChange={function(e) { setForm(Object.assign({}, form, { name: e.target.value })); }} style={{ border: "1px solid #e0dcd3", borderRadius: 12, padding: "14px 18px", font: "400 15px 'Readex Pro',sans-serif", background: "#faf7f2", outline: "none" }} />
+                <input required type="email" placeholder={t.formEmail} value={form.email} onChange={function(e) { setForm(Object.assign({}, form, { email: e.target.value })); }} style={{ border: "1px solid #e0dcd3", borderRadius: 12, padding: "14px 18px", font: "400 15px 'Readex Pro',sans-serif", background: "#faf7f2", outline: "none" }} />
+                <textarea required placeholder={t.formMessage} value={form.message} onChange={function(e) { setForm(Object.assign({}, form, { message: e.target.value })); }} rows={4} style={{ border: "1px solid #e0dcd3", borderRadius: 12, padding: "14px 18px", font: "400 15px 'Readex Pro',sans-serif", background: "#faf7f2", outline: "none", resize: "vertical" }}></textarea>
+                <button type="submit" disabled={status === "sending"} style={{ border: "none", cursor: "pointer", background: "#f39200", color: "#fff", padding: 15, borderRadius: 999, font: "600 16px 'Readex Pro',sans-serif" }}>
+                  {status === "sending" ? "..." : t.formSubmit}
+                </button>
+                {status === "error" && <p style={{ color: "#c0392b", fontSize: 13, textAlign: "center" }}>{t.formError}</p>}
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <footer style={{ background: "#122846", padding: "26px 56px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10, font: "300 14px 'Readex Pro',sans-serif", color: "#c8d3e4" }}>
+        <span>{t.footerCopyright}</span>
+        <span style={{ color: "#f39200" }}>info@hkmt.lu</span>
+      </footer>
+
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

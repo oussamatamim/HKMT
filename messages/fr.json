@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "HKMT Solutions — Conseil & solutions IT au Luxembourg",
+    "description": "HKMT Solutions accompagne entreprises et particuliers dans la conception, le développement et la sécurisation de leurs systèmes d'information au Luxembourg."
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "Conseil & solutions IT — Luxembourg",
+    "title": "La technologie au service de vos ambitions",
+    "text": "HKMT Solutions accompagne entreprises et particuliers dans la conception, le développement et la sécurisation de leurs systèmes d'information — du conseil à l'exploitation, avec écoute et proximité.",
+    "ctaPrimary": "Parlons de votre projet",
+    "ctaSecondary": "Découvrir nos services"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Nos domaines d'expertise",
+    "items": [
+      {
+        "title": "Conseil & audit IT",
+        "text": "Analyse, audit et conception de vos systèmes d'information et infrastructures technologiques."
+      },
+      {
+        "title": "Développement logiciel",
+        "text": "Développement, intégration et maintenance de logiciels, applications et solutions digitales sur mesure."
+      },
+      {
+        "title": "Cybersécurité",
+        "text": "Protection de vos systèmes et gestion sécurisée de vos données, selon les meilleurs standards."
+      },
+      {
+        "title": "Cloud computing",
+        "text": "Migration, hébergement et exploitation de vos infrastructures dans le cloud, en toute fiabilité."
+      },
+      {
+        "title": "IA & transformation digitale",
+        "text": "Intelligence artificielle et accompagnement de bout en bout dans votre transformation numérique."
+      },
+      {
+        "title": "Formation & assistance",
+        "text": "Formation de vos équipes et assistance technique continue dans tous nos domaines d'expertise."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "title": "Une société luxembourgeoise, proche de ses clients",
+    "text1": "Basée au Grand-Duché de Luxembourg, HKMT Solutions est née d'une conviction simple : les meilleures solutions technologiques naissent d'une écoute attentive, guidée par la sagesse.",
+    "text2": "Nous privilégions des relations durables, un langage clair et des solutions pragmatiques — pour les entreprises comme pour les particuliers.",
+    "stats": {
+      "expertiseValue": "6",
+      "expertiseLabel": "domaines d'expertise",
+      "languagesValue": "FR · EN",
+      "languagesLabel": "accompagnement multilingue"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Contactez-nous",
+    "text": "Un projet, une question, un besoin d'audit ? Écrivez-nous, nous vous répondons rapidement.",
+    "emailLabel": "Email",
+    "email": "info@hkmt.lu",
+    "locationLabel": "Lieu",
+    "location": "Luxembourg",
+    "form": {
+      "name": "Nom",
+      "namePlaceholder": "Votre nom",
+      "email": "Email",
+      "emailPlaceholder": "vous@exemple.com",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre projet ou de votre besoin...",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours…",
+      "success": "Message envoyé ! Nous vous répondrons rapidement.",
+      "error": "Une erreur est survenue. Merci de réessayer ou de nous écrire directement à info@hkmt.lu.",
+      "errors": {
+        "nameRequired": "Merci d'indiquer votre nom.",
+        "emailRequired": "Merci d'indiquer votre email.",
+        "emailInvalid": "Le format de l'email n'est pas valide.",
+        "messageRequired": "Merci de rédiger un message.",
+        "messageTooShort": "Votre message doit contenir au moins 10 caractères."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Conseil & solutions IT — Luxembourg",
+    "copyright": "© 2026 HKMT Solutions S.à r.l. — Luxembourg"
+  },
+  "languageSwitcher": {
+    "label": "Langue"
+  }
+}
