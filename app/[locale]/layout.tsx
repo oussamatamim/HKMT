@@ -2,21 +2,13 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { Inter, Fraunces } from "next/font/google";
+import { Inter } from "next/font/google";
 import { routing, isValidLocale, type Locale } from "@/i18n/routing";
 import "../globals.css";
 
 const sans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const serif = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["500", "600"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -74,7 +66,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} dir="ltr" className={`${sans.variable} ${serif.variable}`}>
+    <html lang={locale} dir="ltr" className={sans.variable}>
       <body className="bg-cream text-navy antialiased">
         <NextIntlClientProvider locale={locale as Locale} messages={messages}>
           {children}
