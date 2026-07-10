@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import Container from "@/components/Container";
+import ScrollReveal from "@/components/ScrollReveal";
 
 type ServiceItem = {
   title: string;
@@ -52,22 +53,21 @@ export default function Services() {
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
-            <article
-              key={item.title}
-              className="group relative overflow-hidden border border-stone-200 bg-stone-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-navy/30 hover:bg-white hover:shadow-card"
-            >
-              <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-orange transition-transform duration-300 group-hover:scale-x-100" />
-              <div className="flex items-start justify-between gap-4">
-                <span className="flex h-11 w-11 items-center justify-center border border-navy/15 text-navy transition-colors group-hover:border-orange group-hover:bg-orange group-hover:text-white [&>svg]:h-5 [&>svg]:w-5">
-                  {ICONS[index]}
-                </span>
-                <span className="text-xs font-semibold tracking-[0.16em] text-stone-400">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-              </div>
-              <h3 className="mt-7 text-lg font-semibold text-navy">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-stone-600">{item.text}</p>
-            </article>
+            <ScrollReveal key={item.title} delay={index * 75} className="h-full">
+              <article className="group relative h-full overflow-hidden border border-stone-200 bg-stone-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-navy/30 hover:bg-white hover:shadow-card">
+                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-orange transition-transform duration-300 group-hover:scale-x-100" />
+                <div className="flex items-start justify-between gap-4">
+                  <span className="flex h-11 w-11 items-center justify-center border border-navy/15 text-navy transition-colors group-hover:border-orange group-hover:bg-orange group-hover:text-white [&>svg]:h-5 [&>svg]:w-5">
+                    {ICONS[index]}
+                  </span>
+                  <span className="text-xs font-semibold tracking-[0.16em] text-stone-400">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-7 text-lg font-semibold text-navy">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-stone-600">{item.text}</p>
+              </article>
+            </ScrollReveal>
           ))}
         </div>
       </Container>

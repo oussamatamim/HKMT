@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Container from "@/components/Container";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function About() {
   const t = useTranslations("about");
@@ -9,7 +10,7 @@ export default function About() {
     <section id="about" className="bg-stone-100 py-20 lg:py-28">
       <Container>
         <div className="grid overflow-hidden bg-cream lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="relative min-h-[23rem] sm:min-h-[31rem] lg:min-h-[40rem]">
+          <ScrollReveal direction="left" className="relative min-h-[23rem] sm:min-h-[31rem] lg:min-h-[40rem]">
             <Image
               src="/luxembourg.jpg"
               alt=""
@@ -19,9 +20,9 @@ export default function About() {
             />
             <div aria-hidden="true" className="absolute inset-0 bg-navy/15" />
             <div aria-hidden="true" className="absolute bottom-0 start-0 h-2 w-28 bg-orange" />
-          </div>
+          </ScrollReveal>
 
-          <div className="flex items-center px-7 py-14 sm:px-12 lg:px-16 xl:px-20">
+          <ScrollReveal direction="right" delay={120} className="flex items-center px-7 py-14 sm:px-12 lg:px-16 xl:px-20">
             <div className="max-w-xl">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-dark">
                 {t("eyebrow")}
@@ -42,7 +43,7 @@ export default function About() {
                 </span>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </Container>
     </section>

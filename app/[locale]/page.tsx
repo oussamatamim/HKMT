@@ -6,6 +6,7 @@ import Services from "@/components/Services";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -24,9 +25,15 @@ export default async function HomePage({
       <Header />
       <main>
         <Hero />
-        <Services />
-        <About />
-        <Contact />
+        <ScrollReveal>
+          <Services />
+        </ScrollReveal>
+        <ScrollReveal>
+          <About />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Contact />
+        </ScrollReveal>
       </main>
       <Footer />
     </>
