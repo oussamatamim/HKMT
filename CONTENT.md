@@ -10,7 +10,7 @@ le namespace de traduction utilisé et leur rôle. Tout le texte affiché vient 
 | Hero | [`components/Hero.tsx`](components/Hero.tsx) | `#hero` | `hero` | Accroche principale : badge, titre, texte, deux CTA (contact / services). |
 | Services | [`components/Services.tsx`](components/Services.tsx) | `#services` | `services` | Grille des 6 domaines d'expertise (conseil & audit, développement, cybersécurité, cloud, IA, formation). Responsive 3/2/1 colonnes. |
 | À propos | [`components/About.tsx`](components/About.tsx) | `#about` | `about` | Positionnement de la société, deux paragraphes, deux statistiques clés. |
-| Contact | [`components/Contact.tsx`](components/Contact.tsx) | `#contact` | `contact` | Coordonnées (email, lieu) + formulaire fonctionnel via Netlify Forms, validation client, états loading/succès/erreur. |
+| Contact | [`components/Contact.tsx`](components/Contact.tsx) | `#contact` | `contact` | Coordonnées (email, lieu) + formulaire fonctionnel via Formspree, validation client, états loading/succès/erreur. |
 | Pied de page | [`components/Footer.tsx`](components/Footer.tsx) | — | `footer` | Logo, liens de navigation, email, copyright. |
 | Sélecteur de langue | [`components/LanguageSwitcher.tsx`](components/LanguageSwitcher.tsx) | — | `languageSwitcher` | Bascule FR / EN, conserve la page courante. |
 
@@ -28,15 +28,10 @@ le namespace de traduction utilisé et leur rôle. Tout le texte affiché vient 
 
 - Validation client dans [`lib/validation.ts`](lib/validation.ts) (nom, email,
   message ≥ 10 caractères), messages d'erreur traduits (`contact.form.errors.*`).
-- Soumission via `fetch` en `POST` vers `/` avec le payload
-  `application/x-www-form-urlencoded`, format attendu par **Netlify Forms**.
-- Détection du formulaire par Netlify au build : le formulaire réel
-  (`components/Contact.tsx`) est rendu côté serveur/client par Next.js et n'est
-  donc pas visible par le scanner statique de Netlify. Un fichier statique
-  miroir, [`public/forms/contact.html`](public/forms/contact.html), reproduit
-  exactement les champs (`name`, `email`, `message`) avec `data-netlify="true"`
-  pour que Netlify provisionne le formulaire "contact" au déploiement.
-- Champ honeypot `bot-field` (anti-spam) présent dans les deux formulaires.
+- Soumission par `fetch` JSON vers l'endpoint **Formspree**, déclaré dans
+  [`lib/formspree.ts`](lib/formspree.ts). L'endpoint est public par conception ;
+  le destinataire se configure dans le tableau de bord Formspree.
+- Formspree gère les notifications de soumission et les protections anti-spam.
 
 ## Marque
 

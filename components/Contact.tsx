@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import Container from "@/components/Container";
+import { contactFormEndpoint } from "@/lib/formspree";
 import {
   validateContactForm,
   isContactFormValid,
@@ -13,12 +14,6 @@ import {
 type Status = "idle" | "loading" | "success" | "error";
 
 const INITIAL_VALUES: ContactFormValues = { name: "", email: "", message: "" };
-
-function encodeFormData(data: Record<string, string>): string {
-  return Object.entries(data)
-    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
-    .join("&");
-}
 
 export default function Contact() {
   const t = useTranslations("contact");
@@ -40,10 +35,13 @@ export default function Contact() {
     setStatus("loading");
 
     try {
-      const response = await fetch("/", {
+      const response = await fetch(contactFormEndpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encodeFormData({ "form-name": "contact", ...values }),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
       });
 
       if (response.ok) {
@@ -100,19 +98,10 @@ export default function Contact() {
           <form
             name="contact"
             method="POST"
-            data-netlify="true"
-            netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
             className="rounded-[1.5rem] bg-white p-7 shadow-[0_18px_50px_rgba(0,0,0,0.16)] sm:p-10 lg:p-12"
             noValidate
           >
-            <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>
-                Ne pas remplir : <input name="bot-field" tabIndex={-1} autoComplete="off" />
-              </label>
-            </p>
-
             <div className="space-y-6">
               <div>
                 <label htmlFor="name" className="mb-2 block text-sm font-semibold text-navy">
