@@ -33,7 +33,7 @@ const ICONS = [
 ];
 
 const CARD_STYLES = [
-  "bg-navy text-white sm:col-span-2",
+  "bg-navy text-white",
   "bg-white text-navy",
   "bg-[#f3eee7] text-navy",
   "bg-white text-navy",
@@ -57,7 +57,7 @@ export default function Services() {
             </h2>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
             <ScrollReveal key={item.title} delay={index * 75} className="h-full">
               <article className={`group relative h-full overflow-hidden rounded-[2rem] p-8 transition-transform duration-500 ease-editorial hover:-translate-y-1 sm:p-10 ${CARD_STYLES[index]}`}>
