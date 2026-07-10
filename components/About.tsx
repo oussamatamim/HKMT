@@ -6,37 +6,42 @@ export default function About() {
   const t = useTranslations("about");
 
   return (
-    <section id="about" className="relative isolate overflow-hidden bg-navy py-24 lg:py-32">
-      <Image
-        src="/luxembourg.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="-z-20 object-cover object-[center_62%]"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(18,38,71,0.72)_0%,rgba(18,38,71,0.56)_42%,rgba(18,38,71,0.30)_74%,rgba(18,38,71,0.18)_100%)]"
-      />
-
+    <section id="about" className="bg-stone-100 py-20 lg:py-28">
       <Container>
-        <div className="max-w-2xl border-s-4 border-orange bg-cream/95 p-8 shadow-[0_24px_70px_rgba(8,24,48,0.28)] backdrop-blur-sm sm:p-10 lg:p-12">
-          <span className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-dark">
-            {t("eyebrow")}
-          </span>
-          <h2 className="mt-5 font-serif text-3xl font-medium tracking-tight text-navy sm:text-4xl lg:text-[2.75rem]">
-            {t("title")}
-          </h2>
-          <p className="mt-7 text-lg leading-relaxed text-stone-700">{t("text1")}</p>
-          <p className="mt-4 text-lg leading-relaxed text-stone-700">{t("text2")}</p>
+        <div className="grid overflow-hidden bg-cream lg:grid-cols-[1.02fr_0.98fr]">
+          <div className="relative min-h-[23rem] sm:min-h-[31rem] lg:min-h-[40rem]">
+            <Image
+              src="/luxembourg.jpg"
+              alt=""
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover object-[center_58%]"
+            />
+            <div aria-hidden="true" className="absolute inset-0 bg-navy/15" />
+            <div aria-hidden="true" className="absolute bottom-0 start-0 h-2 w-28 bg-orange" />
+          </div>
 
-          <div className="mt-10 inline-flex items-center gap-4 border-t border-stone-300 pt-5">
-            <span className="font-serif text-5xl font-medium leading-none text-orange">
-              {t("stats.expertiseValue")}
-            </span>
-            <span className="max-w-[10rem] text-sm font-medium leading-snug text-stone-600">
-              {t("stats.expertiseLabel")}
-            </span>
+          <div className="flex items-center px-7 py-14 sm:px-12 lg:px-16 xl:px-20">
+            <div className="max-w-xl">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-dark">
+                {t("eyebrow")}
+              </span>
+              <h2 className="mt-5 font-serif text-3xl font-medium leading-tight tracking-tight text-navy sm:text-4xl">
+                {t("title")}
+              </h2>
+              <div className="mt-7 space-y-4 text-base leading-relaxed text-stone-700 sm:text-lg">
+                <p>{t("text1")}</p>
+                <p>{t("text2")}</p>
+              </div>
+              <div className="mt-10 flex items-center gap-4 border-t border-stone-300 pt-6">
+                <span className="font-serif text-5xl font-medium leading-none text-navy">
+                  {t("stats.expertiseValue")}
+                </span>
+                <span className="max-w-[9rem] text-sm font-medium leading-snug text-stone-600">
+                  {t("stats.expertiseLabel")}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

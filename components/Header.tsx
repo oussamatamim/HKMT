@@ -27,18 +27,18 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b bg-cream/95 backdrop-blur-md transition-shadow duration-300 ease-editorial ${
+      className={`sticky top-0 z-40 border-b bg-white/95 backdrop-blur-md transition-shadow duration-300 ease-editorial ${
         scrolled ? "border-navy/10 shadow-[0_1px_0_0_rgba(27,55,100,0.06)]" : "border-transparent"
       }`}
     >
       <div
         className={`mx-auto flex w-full max-w-6xl items-center justify-between px-6 transition-[padding] duration-300 ease-editorial lg:px-8 ${
-          scrolled ? "py-3" : "py-5"
+          scrolled ? "py-3" : "py-4"
         }`}
       >
         <a href="#hero" className="focus-ring flex items-center gap-2 rounded-md">
           {/* eslint-disable-next-line @next/next/no-img-element -- SVG logo, no LCP concern */}
-          <img src="/hkmt-logo.svg" alt="HKMT Solutions" className="h-9 w-auto" />
+          <img src="/hkmt-logo.svg" alt="HKMT Solutions" className="h-10 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-9 md:flex" aria-label="Main navigation">
@@ -58,7 +58,7 @@ export default function Header() {
           <LanguageSwitcher variant="light" />
           <a
             href="#contact"
-            className="focus-ring inline-flex items-center border border-navy bg-navy px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-navy-light"
+            className="focus-ring inline-flex items-center bg-orange px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-dark"
           >
             {t("contact")}
           </a>
@@ -92,7 +92,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-navy/10 bg-cream md:hidden">
+        <div className="border-t border-navy/10 bg-white md:hidden">
           <nav className="flex flex-col gap-1 px-6 py-4" aria-label="Mobile navigation">
             {NAV_ITEMS.map((item) => (
               <a
@@ -109,7 +109,7 @@ export default function Header() {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="focus-ring inline-flex items-center bg-navy px-5 py-2.5 text-sm font-medium text-white"
+                className="focus-ring inline-flex items-center bg-orange px-5 py-2.5 text-sm font-semibold text-white"
               >
                 {t("contact")}
               </a>

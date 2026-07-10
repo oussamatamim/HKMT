@@ -7,22 +7,22 @@ export default function Footer() {
   const tContact = useTranslations("contact");
 
   return (
-    <footer className="border-t border-navy/10 bg-navy py-12 text-white">
+    <footer className="border-t-4 border-orange bg-navy py-14 text-white">
       <Container>
-        <div className="flex flex-col items-center gap-8 text-center sm:flex-row sm:items-start sm:justify-between sm:text-start">
+        <div className="grid gap-10 text-center md:grid-cols-[1.1fr_1fr_auto] md:items-start md:text-start">
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element -- SVG logo, no LCP concern */}
             <img
               src="/hkmt-logo-white.svg"
               alt="HKMT Solutions"
-              className="mx-auto h-9 w-auto sm:mx-0"
+              className="mx-auto h-10 w-auto md:mx-0"
             />
             <p className="mt-3 text-sm text-white/70">{t("tagline")}</p>
           </div>
 
           <nav
             aria-label="Footer navigation"
-            className="flex flex-wrap justify-center gap-x-7 gap-y-2 text-sm font-medium text-white/80 sm:justify-start"
+            className="flex flex-wrap justify-center gap-x-7 gap-y-3 text-sm font-medium text-white/80 md:justify-start"
           >
             <a href="#hero" className="focus-ring transition-colors hover:text-orange">
               {tNav("home")}
@@ -46,7 +46,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <p className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/60">
+        <p className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-white/60">
           {t("copyright")}
         </p>
       </Container>
