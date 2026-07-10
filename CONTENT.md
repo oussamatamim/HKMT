@@ -9,7 +9,9 @@ le namespace de traduction utilisé et leur rôle. Tout le texte affiché vient 
 | En-tête | [`components/Header.tsx`](components/Header.tsx) | — | `nav` | Logo, navigation vers les sections, sélecteur de langue, CTA contact. Sticky, menu mobile. |
 | Hero | [`components/Hero.tsx`](components/Hero.tsx) | `#hero` | `hero` | Accroche principale : badge, titre, texte, deux CTA (contact / services). |
 | Services | [`components/Services.tsx`](components/Services.tsx) | `#services` | `services` | Grille des 6 domaines d'expertise (conseil & audit, développement, cybersécurité, cloud, IA, formation). Responsive 3/2/1 colonnes. |
+| Pourquoi HKMT | [`components/WhyHKMT.tsx`](components/WhyHKMT.tsx) | — | `whyHKMT` | Quatre piliers de confiance : proximité, solutions sur mesure, sécurité et innovation. |
 | À propos | [`components/About.tsx`](components/About.tsx) | `#about` | `about` | Positionnement de la société, deux paragraphes, deux statistiques clés. |
+| Méthodologie | [`components/Methodology.tsx`](components/Methodology.tsx) | — | `methodology` | Parcours en quatre étapes : écoute, conception, déploiement et accompagnement. |
 | Contact | [`components/Contact.tsx`](components/Contact.tsx) | `#contact` | `contact` | Coordonnées (email, lieu) + formulaire fonctionnel via Formspree, validation client, états loading/succès/erreur. |
 | Pied de page | [`components/Footer.tsx`](components/Footer.tsx) | — | `footer` | Logo, liens de navigation, email, copyright. |
 | Sélecteur de langue | [`components/LanguageSwitcher.tsx`](components/LanguageSwitcher.tsx) | — | `languageSwitcher` | Bascule FR / EN, conserve la page courante. |

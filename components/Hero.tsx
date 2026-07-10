@@ -2,31 +2,33 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Container from "@/components/Container";
 
-type ServiceItem = {
-  title: string;
+type HeroStat = {
+  value: string;
+  label: string;
 };
 
-const SERVICE_ICONS = [
-  <svg key="audit" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M6 3h9l3 3v15H6V3Z" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M9 10h6M9 14h6M9 18h3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+const STAT_ICONS = [
+  <svg key="experience" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="8" cy="8" r="2.5" stroke="currentColor" strokeWidth="1.5" />
+    <circle cx="16" cy="8" r="2.5" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M3.5 19c.4-2.9 2.1-4.5 4.5-4.5s4.1 1.6 4.5 4.5M12 19c.4-2.6 1.9-4 4-4 2.4 0 4.1 1.6 4.5 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
   </svg>,
-  <svg key="development" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 5l-4 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  <svg key="expertise" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <path d="m12 3 2.2 4.5 5 .7-3.6 3.5.8 4.9-4.4-2.3-4.4 2.3.8-4.9-3.6-3.5 5-.7L12 3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
   </svg>,
-  <svg key="security" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <svg key="support" viewBox="0 0 24 24" fill="none" aria-hidden="true">
     <path d="M12 3 5 6v5c0 4.4 2.9 7.5 7 9 4.1-1.5 7-4.6 7-9V6l-7-3Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    <path d="m9.5 12 1.7 1.7 3.5-3.6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>,
 ];
 
 export default function Hero() {
   const t = useTranslations("hero");
-  const serviceT = useTranslations("services");
-  const services = serviceT.raw("items") as ServiceItem[];
+  const stats = t.raw("stats") as HeroStat[];
 
   return (
-    <section id="hero" className="bg-[#f5f5f7] px-4 py-5 sm:px-6 sm:py-7 lg:py-10">
-      <div className="relative mx-auto min-h-[42rem] max-w-[90rem] overflow-hidden rounded-[2rem] bg-navy shadow-[0_28px_70px_rgba(20,39,74,0.2)] lg:min-h-[43rem] lg:rounded-[2.5rem]">
+    <section id="hero" className="bg-navy">
+      <div className="relative min-h-[42rem] overflow-hidden bg-navy lg:min-h-[43rem]">
         <Image
           src="/consulting-office.jpg"
           alt=""
@@ -67,19 +69,25 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="mt-9 grid gap-2 sm:grid-cols-3">
-              {services.slice(0, 3).map((service, index) => (
+            <div className="mt-9 grid gap-3 sm:grid-cols-3">
+              {stats.map((stat, index) => (
                 <div
-                  key={service.title}
-                  className="flex min-h-[5.5rem] items-center gap-3 rounded-xl border border-white/10 bg-white/10 px-4 py-3 backdrop-blur-sm"
+                  key={stat.value}
+                  className="flex min-h-[5.5rem] items-center gap-3 rounded-xl border border-white/10 bg-white/10 px-4 py-3 shadow-[0_12px_28px_rgba(0,0,0,0.12)] backdrop-blur-sm"
                 >
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange/20 text-orange-light [&>svg]:h-4 [&>svg]:w-4">
-                    {SERVICE_ICONS[index]}
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange/15 text-orange-light [&>svg]:h-5 [&>svg]:w-5">
+                    {STAT_ICONS[index]}
                   </span>
-                  <span className="text-xs font-medium leading-snug text-white/85">{service.title}</span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold leading-tight text-orange-light">
+                      {stat.value}
+                    </span>
+                    <span className="mt-1 block text-xs font-medium leading-snug text-white/75">{stat.label}</span>
+                  </span>
                 </div>
               ))}
             </div>
+
           </div>
         </Container>
       </div>

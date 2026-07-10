@@ -14,7 +14,12 @@
     "title": "La technologie au service de vos ambitions",
     "text": "HKMT Solutions accompagne entreprises et particuliers dans la conception, le développement et la sécurisation de leurs systèmes d'information — du conseil à l'exploitation, avec écoute et proximité.",
     "ctaPrimary": "Parlons de votre projet",
-    "ctaSecondary": "Découvrir nos services"
+    "ctaSecondary": "Découvrir nos services",
+    "stats": [
+      { "value": "+10 ans", "label": "d'expérience" },
+      { "value": "6", "label": "domaines d'expertise" },
+      { "value": "Accompagnement", "label": "de bout en bout" }
+    ]
   },
   "services": {
     "eyebrow": "Services",
@@ -46,15 +51,61 @@
       }
     ]
   },
+  "whyHKMT": {
+    "eyebrow": "Pourquoi HKMT",
+    "title": "Un partenaire de confiance au service de vos enjeux",
+    "pillars": [
+      {
+        "title": "Proximité & écoute",
+        "text": "Un interlocuteur dédié qui comprend vos enjeux et reste à vos côtés."
+      },
+      {
+        "title": "Solutions sur mesure",
+        "text": "Des réponses adaptées à vos objectifs, pas des solutions toutes faites."
+      },
+      {
+        "title": "Sécurité & qualité",
+        "text": "Des standards élevés pour garantir la sûreté et la pérennité de vos systèmes."
+      },
+      {
+        "title": "Innovation & impact",
+        "text": "Nous mettons la technologie au service de votre croissance et de votre performance."
+      }
+    ]
+  },
+  "methodology": {
+    "eyebrow": "Notre méthodologie",
+    "title": "Une approche simple, efficace et collaborative",
+    "steps": [
+      {
+        "title": "Écouter & comprendre",
+        "text": "Nous prenons le temps de comprendre vos besoins, vos contraintes et vos objectifs."
+      },
+      {
+        "title": "Concevoir & proposer",
+        "text": "Nous concevons la solution la plus pertinente et sécurisée pour votre contexte."
+      },
+      {
+        "title": "Déployer & intégrer",
+        "text": "Nous mettons en œuvre la solution avec rigueur et minimisons son impact sur vos activités."
+      },
+      {
+        "title": "Accompagner & évoluer",
+        "text": "Nous restons à vos côtés pour optimiser, faire évoluer et sécuriser vos systèmes dans la durée."
+      }
+    ]
+  },
   "about": {
     "eyebrow": "À propos",
     "title": "Une société luxembourgeoise, proche de ses clients",
     "text1": "Basée au Grand-Duché de Luxembourg, HKMT Solutions est née d'une conviction simple : les meilleures solutions technologiques naissent d'une écoute attentive, guidée par la sagesse.",
     "text2": "Nous privilégions des relations durables, un langage clair et des solutions pragmatiques — pour les entreprises comme pour les particuliers.",
-    "stats": {
-      "expertiseValue": "6",
-      "expertiseLabel": "domaines d'expertise"
-    }
+    "locationBadge": "Ancrés au Luxembourg",
+    "stats": [
+      { "value": "Luxembourg", "label": "Notre ancrage" },
+      { "value": "+10 ans", "label": "D'expérience" },
+      { "value": "100%", "label": "Engagement client" }
+    ]
   },
   "contact": {
     "eyebrow": "Contact",

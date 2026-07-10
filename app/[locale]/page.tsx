@@ -3,7 +3,9 @@ import { routing } from "@/i18n/routing";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
+import WhyHKMT from "@/components/WhyHKMT";
 import About from "@/components/About";
+import Methodology from "@/components/Methodology";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -29,7 +31,13 @@ export default async function HomePage({
           <Services />
         </ScrollReveal>
         <ScrollReveal>
+          <WhyHKMT />
+        </ScrollReveal>
+        <ScrollReveal>
           <About />
+        </ScrollReveal>
+        <ScrollReveal>
+          <Methodology />
         </ScrollReveal>
         <ScrollReveal>
           <Contact />

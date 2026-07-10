@@ -14,7 +14,12 @@
     "title": "Technology in the service of your ambitions",
     "text": "HKMT Solutions supports businesses and individuals in the design, development and security of their information systems — from consulting to operations, with attentiveness and proximity.",
     "ctaPrimary": "Let's talk about your project",
-    "ctaSecondary": "Discover our services"
+    "ctaSecondary": "Discover our services",
+    "stats": [
+      { "value": "+10 years", "label": "of experience" },
+      { "value": "6", "label": "areas of expertise" },
+      { "value": "End-to-end", "label": "guidance" }
+    ]
   },
   "services": {
     "eyebrow": "Services",
@@ -46,15 +51,61 @@
       }
     ]
   },
+  "whyHKMT": {
+    "eyebrow": "Why HKMT",
+    "title": "A trusted partner committed to your goals",
+    "pillars": [
+      {
+        "title": "Proximity & listening",
+        "text": "A dedicated contact who understands your challenges and stays by your side."
+      },
+      {
+        "title": "Tailored solutions",
+        "text": "Answers tailored to your goals, not one-size-fits-all solutions."
+      },
+      {
+        "title": "Security & quality",
+        "text": "High standards to ensure the security and durability of your systems."
+      },
+      {
+        "title": "Innovation & impact",
+        "text": "We put technology at the service of your growth and performance."
+      }
+    ]
+  },
+  "methodology": {
+    "eyebrow": "Our methodology",
+    "title": "A simple, effective and collaborative approach",
+    "steps": [
+      {
+        "title": "Listen & understand",
+        "text": "We take the time to understand your needs, constraints and objectives."
+      },
+      {
+        "title": "Design & propose",
+        "text": "We design the most relevant and secure solution for your context."
+      },
+      {
+        "title": "Deploy & integrate",
+        "text": "We implement the solution rigorously and minimise its impact on your operations."
+      },
+      {
+        "title": "Support & evolve",
+        "text": "We stay by your side to optimise, evolve and secure your systems over time."
+      }
+    ]
+  },
   "about": {
     "eyebrow": "About",
     "title": "A Luxembourg company, close to its clients",
     "text1": "Based in the Grand Duchy of Luxembourg, HKMT Solutions was born from a simple conviction: the best technological solutions come from attentive listening, guided by wisdom.",
     "text2": "We favour lasting relationships, clear language and pragmatic solutions — for businesses and individuals alike.",
-    "stats": {
-      "expertiseValue": "6",
-      "expertiseLabel": "areas of expertise"
-    }
+    "locationBadge": "Rooted in Luxembourg",
+    "stats": [
+      { "value": "Luxembourg", "label": "Our foundation" },
+      { "value": "+10 years", "label": "Of experience" },
+      { "value": "100%", "label": "Client commitment" }
+    ]
   },
   "contact": {
     "eyebrow": "Contact",
