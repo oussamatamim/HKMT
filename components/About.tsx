@@ -7,9 +7,9 @@ export default function About() {
   const t = useTranslations("about");
 
   return (
-    <section id="about" className="bg-stone-100 py-20 lg:py-28">
+    <section id="about" className="bg-white py-20 lg:py-28">
       <Container>
-        <div className="grid overflow-hidden bg-cream lg:grid-cols-[1.02fr_0.98fr]">
+        <div className="grid overflow-hidden rounded-[2rem] bg-[#f5f5f7] lg:grid-cols-[1.02fr_0.98fr] lg:rounded-[2.5rem]">
           <ScrollReveal direction="left" className="relative min-h-[23rem] sm:min-h-[31rem] lg:min-h-[40rem]">
             <Image
               src="/luxembourg.jpg"
@@ -27,7 +27,7 @@ export default function About() {
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-dark">
                 {t("eyebrow")}
               </span>
-              <h2 className="mt-5 font-serif text-3xl font-medium leading-tight tracking-tight text-navy sm:text-4xl">
+              <h2 className="mt-5 font-serif text-4xl font-medium leading-[1.06] tracking-tight text-navy sm:text-5xl">
                 {t("title")}
               </h2>
               <div className="mt-7 space-y-4 text-base leading-relaxed text-stone-700 sm:text-lg">
@@ -35,7 +35,7 @@ export default function About() {
                 <p>{t("text2")}</p>
               </div>
               <div className="mt-10 flex items-center gap-4 border-t border-stone-300 pt-6">
-                <span className="font-serif text-5xl font-medium leading-none text-navy">
+                <span className="font-serif text-6xl font-medium leading-none text-orange">
                   {t("stats.expertiseValue")}
                 </span>
                 <span className="max-w-[9rem] text-sm font-medium leading-snug text-stone-600">

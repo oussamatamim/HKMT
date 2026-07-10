@@ -62,9 +62,9 @@ export default function Contact() {
     "w-full border border-stone-300 bg-stone-50 px-4 py-3 text-navy placeholder:text-stone-400 transition-colors focus:border-navy focus:bg-white focus:outline-none";
 
   return (
-    <section id="contact" className="bg-navy py-20 lg:py-28">
+    <section id="contact" className="bg-[#f5f5f7] py-20 lg:py-28">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
+        <div className="grid gap-12 overflow-hidden rounded-[2rem] bg-navy px-7 py-12 sm:px-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20 lg:px-16 lg:py-16 xl:rounded-[2.5rem]">
           <div className="self-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-light">
               {t("eyebrow")}
@@ -103,7 +103,7 @@ export default function Contact() {
             data-netlify="true"
             netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
-            className="bg-cream p-7 sm:p-10 lg:p-12"
+            className="rounded-[1.5rem] bg-white p-7 shadow-[0_18px_50px_rgba(0,0,0,0.16)] sm:p-10 lg:p-12"
             noValidate
           >
             <input type="hidden" name="form-name" value="contact" />

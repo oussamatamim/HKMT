@@ -32,40 +32,45 @@ const ICONS = [
   </svg>,
 ];
 
+const CARD_STYLES = [
+  "bg-navy text-white sm:col-span-2",
+  "bg-white text-navy",
+  "bg-[#f3eee7] text-navy",
+  "bg-white text-navy",
+  "bg-navy text-white",
+  "bg-[#e9f0f4] text-navy",
+];
+
 export default function Services() {
   const t = useTranslations("services");
   const items = t.raw("items") as ServiceItem[];
 
   return (
-    <section id="services" className="bg-white py-20 lg:py-28">
+    <section id="services" className="bg-stone-100 py-20 lg:py-28">
       <Container>
-        <div className="grid gap-8 border-b border-stone-200 pb-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
+        <div className="mx-auto max-w-3xl text-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-dark">
               {t("eyebrow")}
             </span>
-            <h2 className="mt-4 font-serif text-3xl font-medium tracking-tight text-navy sm:text-4xl">
+            <h2 className="mt-4 font-serif text-4xl font-medium tracking-tight text-navy sm:text-5xl">
               {t("title")}
             </h2>
-          </div>
-          <div aria-hidden="true" className="hidden h-px bg-stone-200 lg:block" />
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
           {items.map((item, index) => (
             <ScrollReveal key={item.title} delay={index * 75} className="h-full">
-              <article className="group relative h-full overflow-hidden border border-stone-200 bg-stone-50 p-7 transition-all duration-300 hover:-translate-y-1 hover:border-navy/30 hover:bg-white hover:shadow-card">
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-orange transition-transform duration-300 group-hover:scale-x-100" />
+              <article className={`group relative h-full overflow-hidden rounded-[2rem] p-8 transition-transform duration-500 ease-editorial hover:-translate-y-1 sm:p-10 ${CARD_STYLES[index]}`}>
                 <div className="flex items-start justify-between gap-4">
-                  <span className="flex h-11 w-11 items-center justify-center border border-navy/15 text-navy transition-colors group-hover:border-orange group-hover:bg-orange group-hover:text-white [&>svg]:h-5 [&>svg]:w-5">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-orange text-white transition-transform duration-500 group-hover:scale-110 [&>svg]:h-6 [&>svg]:w-6">
                     {ICONS[index]}
                   </span>
-                  <span className="text-xs font-semibold tracking-[0.16em] text-stone-400">
+                  <span className={`text-xs font-semibold tracking-[0.16em] ${index === 0 || index === 4 ? "text-white/55" : "text-navy/45"}`}>
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="mt-7 text-lg font-semibold text-navy">{item.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-stone-600">{item.text}</p>
+                <h3 className="mt-10 text-2xl font-semibold tracking-tight">{item.title}</h3>
+                <p className={`mt-3 max-w-xl text-base leading-relaxed ${index === 0 || index === 4 ? "text-white/75" : "text-stone-600"}`}>{item.text}</p>
               </article>
             </ScrollReveal>
           ))}
