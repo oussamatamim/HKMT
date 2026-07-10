@@ -60,8 +60,12 @@ export default function Services() {
         <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, index) => (
             <ScrollReveal key={item.title} delay={index * 75} className="h-full">
-              <article className={`group relative h-full overflow-hidden rounded-[2rem] p-8 transition-transform duration-500 ease-editorial hover:-translate-y-1 sm:p-10 ${CARD_STYLES[index]}`}>
-                <div className="flex items-start justify-between gap-4">
+              <article className={`group relative h-full overflow-hidden rounded-[2rem] p-8 transition-all duration-500 ease-editorial hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(20,39,74,0.2)] sm:p-10 ${CARD_STYLES[index]} ${index === 0 || index === 4 ? "border border-white/10 shadow-[0_18px_45px_rgba(20,39,74,0.26)]" : "border border-white/80 shadow-[0_18px_45px_rgba(20,39,74,0.1)]"}`}>
+                <span
+                  aria-hidden="true"
+                  className={`absolute -end-14 -top-14 h-40 w-40 rounded-full blur-3xl transition-opacity duration-500 group-hover:opacity-100 ${index === 0 || index === 4 ? "bg-orange/25 opacity-60" : "bg-navy/10 opacity-40"}`}
+                />
+                <div className="relative flex items-start justify-between gap-4">
                   <span className="flex h-12 w-12 items-center justify-center rounded-full bg-orange text-white transition-transform duration-500 group-hover:scale-110 [&>svg]:h-6 [&>svg]:w-6">
                     {ICONS[index]}
                   </span>
@@ -69,8 +73,8 @@ export default function Services() {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="mt-10 text-2xl font-semibold tracking-tight">{item.title}</h3>
-                <p className={`mt-3 max-w-xl text-base leading-relaxed ${index === 0 || index === 4 ? "text-white/75" : "text-stone-600"}`}>{item.text}</p>
+                <h3 className="relative mt-10 text-2xl font-semibold tracking-tight">{item.title}</h3>
+                <p className={`relative mt-3 max-w-xl text-base leading-relaxed ${index === 0 || index === 4 ? "text-white/75" : "text-stone-600"}`}>{item.text}</p>
               </article>
             </ScrollReveal>
           ))}

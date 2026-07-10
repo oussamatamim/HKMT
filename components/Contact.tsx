@@ -62,7 +62,7 @@ export default function Contact() {
   return (
     <section id="contact" className="bg-[#f5f5f7] py-20 lg:py-28">
       <Container>
-        <div className="grid gap-12 overflow-hidden rounded-[2rem] bg-navy px-7 py-12 sm:px-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20 lg:px-16 lg:py-16 xl:rounded-[2.5rem]">
+        <div className="grid gap-12 overflow-hidden rounded-[2rem] bg-navy px-7 py-12 shadow-[0_24px_70px_rgba(20,39,74,0.24)] ring-1 ring-white/10 sm:px-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20 lg:px-16 lg:py-16 xl:rounded-[2.5rem]">
           <div className="self-center">
             <span className="text-xs font-semibold uppercase tracking-[0.2em] text-orange-light">
               {t("eyebrow")}
@@ -99,7 +99,7 @@ export default function Contact() {
             name="contact"
             method="POST"
             onSubmit={handleSubmit}
-            className="rounded-[1.5rem] bg-white p-7 shadow-[0_18px_50px_rgba(0,0,0,0.16)] sm:p-10 lg:p-12"
+            className="rounded-[1.5rem] bg-white p-7 shadow-[0_18px_50px_rgba(0,0,0,0.2)] ring-1 ring-black/5 sm:p-10 lg:p-12"
             noValidate
           >
             <div className="space-y-6">

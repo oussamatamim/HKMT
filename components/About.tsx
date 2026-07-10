@@ -9,7 +9,7 @@ export default function About() {
   return (
     <section id="about" className="bg-white py-20 lg:py-28">
       <Container>
-        <div className="grid overflow-hidden rounded-[2rem] bg-[#f5f5f7] lg:grid-cols-[1.02fr_0.98fr] lg:rounded-[2.5rem]">
+        <div className="grid overflow-hidden rounded-[2rem] bg-[#f5f5f7] shadow-[0_24px_70px_rgba(20,39,74,0.14)] ring-1 ring-black/5 lg:grid-cols-[1.02fr_0.98fr] lg:rounded-[2.5rem]">
           <ScrollReveal direction="left" className="relative min-h-[23rem] sm:min-h-[31rem] lg:min-h-[40rem]">
             <Image
               src="/luxembourg.jpg"
