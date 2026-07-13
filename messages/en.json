@@ -16,7 +16,6 @@
     "ctaPrimary": "Let's talk about your project",
     "ctaSecondary": "Discover our services",
     "stats": [
-      { "value": "+10 years", "label": "of experience" },
       { "value": "6", "label": "areas of expertise" },
       { "value": "End-to-end", "label": "guidance" }
     ]
@@ -103,7 +102,6 @@
     "locationBadge": "Rooted in Luxembourg",
     "stats": [
       { "value": "Luxembourg", "label": "Our foundation" },
-      { "value": "+10 years", "label": "Of experience" },
       { "value": "100%", "label": "Client commitment" }
     ]
   },

@@ -52,7 +52,7 @@ export default function About() {
               <p>{t("text2")}</p>
             </div>
 
-            <div className="mt-10 grid gap-3 sm:grid-cols-3">
+            <div className="mt-10 grid max-w-xl gap-3 sm:grid-cols-2">
               {stats.map((stat) => (
                 <div
                   key={stat.value}

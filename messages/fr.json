@@ -16,7 +16,6 @@
     "ctaPrimary": "Parlons de votre projet",
     "ctaSecondary": "Découvrir nos services",
     "stats": [
-      { "value": "+10 ans", "label": "d'expérience" },
       { "value": "6", "label": "domaines d'expertise" },
       { "value": "Accompagnement", "label": "de bout en bout" }
     ]
@@ -103,7 +102,6 @@
     "locationBadge": "Ancrés au Luxembourg",
     "stats": [
       { "value": "Luxembourg", "label": "Notre ancrage" },
-      { "value": "+10 ans", "label": "D'expérience" },
       { "value": "100%", "label": "Engagement client" }
     ]
   },
